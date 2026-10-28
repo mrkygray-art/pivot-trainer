@@ -175,3 +175,31 @@ export type GeneratedTraining = {
   createdAt: string;
   verifiedBy: string;
 };
+
+// ---------- Pack builder ----------
+export const SectionBreaks = z.object({
+  sections: z.array(
+    z.object({
+      number: z.string().describe('Section number like "1", "2", "2.1"'),
+      title: z.string().describe("Short section title; reuse the document's own heading text when there is one"),
+      anchor: z.string().describe("The first 6-12 words of the section, copied EXACTLY from the document"),
+    }),
+  ),
+});
+export type SectionBreaks = z.infer<typeof SectionBreaks>;
+
+export const RuleSuggestions = z.object({
+  displayName: z.string().describe("Short pack name, 2-4 words"),
+  organization: z.string().describe("Organization name as written in the documents, or empty if none"),
+  description: z.string().describe("One sentence on what these documents cover"),
+  tone: z.string(),
+  readingLevel: z.string(),
+  audience: z.array(z.object({ role: z.string().describe("lowercase-hyphenated role name"), notes: z.string() })),
+  glossary: z.array(
+    z.object({ term: z.string(), definition: z.string().describe("Definition using the documents' own wording") }),
+  ),
+  guardrails: z.array(z.string()).describe("Extra rules the documents imply, e.g. required disclaimers or escalation language"),
+  neverSay: z.array(z.string()).describe("Words or claims that would contradict or overstate the documents"),
+  starterPrompts: z.array(z.string()).describe('Three requests like "Build a short training on ..." that the documents can support'),
+});
+export type RuleSuggestions = z.infer<typeof RuleSuggestions>;

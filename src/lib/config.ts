@@ -10,6 +10,8 @@ export const EFFORT = {
   outline: "low",
   generate: "medium",
   verify: "low",
+  sections: "low",
+  suggest: "low",
 } as const;
 
 export const DEMO_LIMITS = {

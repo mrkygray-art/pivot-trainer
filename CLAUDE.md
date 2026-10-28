@@ -10,5 +10,6 @@ Key paths:
 - `src/lib/` engine: schemas (Zod), prompts, Claude calls, code checks, pack loader
 - `src/app/api/` coverage, outline, generate (generate + code checks + verify)
 - `src/components/` fixed UI components; the AI only fills JSON
+- `src/components/builder/` Stage A pack builder (documents, sections, rules, review); custom packs live in localStorage
 
-Scripts (dev server on :3210): `node scripts/smoke.mjs`, `npx tsx scripts/tamper-test.mts`, `node scripts/e2e.mjs`.
+Scripts (dev server on :3210): `node scripts/smoke.mjs`, `npx tsx scripts/tamper-test.mts`, `node scripts/e2e.mjs`, `node scripts/e2e-ask.mjs`, `node scripts/e2e-builder.mjs`.

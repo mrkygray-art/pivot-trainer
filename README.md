@@ -8,6 +8,15 @@ One engine, swappable **content packs**. The same app builds a field-procedure t
 
 ## What it does
 
+**Stage A: set up the knowledge base** (before any training is designed)
+
+1. **Add documents.** Paste text or upload Word, PDF, text, or markdown files, and tag each as an SOP, policy, or guideline.
+2. **Check sections.** Documents are split into numbered, citable sections. Numbered headings are kept, unnumbered headings are numbered automatically, and documents with no headings get section breaks suggested by Claude. The wording is never rewritten: the code slices the original text and verifies it.
+3. **Set the rules.** Guardrails, never-say list, glossary, audience roles, and style. "Suggest from my documents" drafts them for you to edit.
+4. **Review and save.** The pack is stored in your browser (export/import as a file) and joins the pack switcher.
+
+**Stage B: build a training**
+
 1. **Pick a pack** and describe the training you want (type it or say it).
 2. **Coverage check.** Before generating anything, it tells you what the documents cover and what they don't. Ask about something that isn't in the documents and it says so instead of making it up.
 3. **Approve the outline.** Chapters, the activity format, and the quiz plan, each tied to document sections.
@@ -44,7 +53,7 @@ packs/<name>/
   samples/    example trainings for illustration and a reliable live demo
 ```
 
-Nothing about security or HR is hardcoded in the engine. To add a pack, add a folder.
+Nothing about security or HR is hardcoded in the engine. To add a built-in pack, add a folder; to add your own without code, use **+ New pack** in the app. Packs made in the app are validated on the server, which rebuilds the sections itself on every request.
 
 ## Stack
 
@@ -71,6 +80,7 @@ Test scripts (run against a dev server on port 3210, or set `BASE_URL`):
 node scripts/smoke.mjs security-sop "Build a short training on handling a customer footage request" out.json
 npx tsx scripts/tamper-test.mts out.json
 node scripts/e2e.mjs security-sop packs/security-sop/samples/footage-request.json shots/
+node scripts/e2e-builder.mjs shots/builder my-sop.docx my-policy.pdf
 ```
 
 ## Roadmap

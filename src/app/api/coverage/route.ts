@@ -1,4 +1,4 @@
-import { loadPack } from "@/lib/packs";
+import { resolvePack } from "@/lib/resolve-pack";
 import { callStructured } from "@/lib/claude";
 import { MODELS, EFFORT } from "@/lib/config";
 import { Coverage } from "@/lib/schemas";
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const request = cleanRequest(body.request);
     if (!request) return badRequest("Describe the training you want (at least a few words).");
-    const pack = await loadPack(String(body.pack));
+    const pack = await resolvePack(body);
 
     const { data } = await callStructured({
       model: MODELS.generate,

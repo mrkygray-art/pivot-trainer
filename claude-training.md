@@ -62,7 +62,16 @@ How to do it (keep it easy):
 
 ## How the demo works (the easy workflow)
 
-1. **Pick a pack** (or upload your own documents to start a new one).
+**Stage A: Set up the knowledge base** (before any training is designed)
+
+A1. **Add documents.** Paste text or upload Word, PDF, text, or markdown. Tag each as SOP, Policy, or Guideline.
+A2. **Check sections.** Documents are split into numbered, citable sections. Existing numbered headings are kept; unnumbered headings are numbered automatically; with no headings, Claude suggests section breaks. The wording is never changed (code verifies it). The user can rename and merge sections before continuing.
+A3. **Set the rules.** Guardrails, never-say list, glossary, audience roles, and style (tone, reading level, colors, font). "Suggest from my documents" drafts these for the user to edit; nothing is used until approved.
+A4. **Review and save** the pack. It joins the pack switcher.
+
+**Stage B: Build a training**
+
+1. **Pick a pack** (a built-in pack or one you created in Stage A).
 2. **Ask** by typing or speaking: "Build a short training on ..."
 3. **Check coverage.** The system tells you what the knowledge base covers and
    what it does not, before generating.
@@ -203,6 +212,7 @@ growth path using the same engine.
 ## Build order
 
 1. Pack structure and pack switcher
+1b. Pack builder (Stage A: add documents, sections, rules, review and save)
 2. Coverage check and outline with citations
 3. Slides and quiz JSON generation
 4. Player with remediation loop
@@ -260,3 +270,7 @@ Newest at the bottom. One line each. Only chosen decisions.
 - 2026-10-28: All Claude calls use the server-side refusal fallback (`fallbacks: "default"`).
 - 2026-10-28: v1 flags unsupported items (report + marker) rather than auto-regenerating them.
 - 2026-10-28: Spec file moved from Downloads into the repo root.
+- 2026-10-28: Added Stage A, "Set up the knowledge base," before training design: add documents, check sections, set rules, review and save. (User asked for a clearer way to enter SOPs, rules, and guidelines first.)
+- 2026-10-28: Packs created in the app are saved in the browser only (no accounts or database), with export/import as a file. The server validates and rebuilds sections from the sent pack on every request.
+- 2026-10-28: v1 document inputs: paste text, Word (.docx), PDF (text-based; scanned PDFs not supported), and text/markdown files. Extraction runs server-side.
+- 2026-10-28: Sectioning: keep numbered headings; auto-number unnumbered headings; otherwise Claude suggests breaks by quoting where each section starts, the code splits the original text there, and the user approves. Document wording is never rewritten.

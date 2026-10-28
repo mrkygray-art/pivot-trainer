@@ -1,5 +1,5 @@
 import { DEMO_LIMITS } from "./config";
-import type { Pack } from "./pack-types";
+import { DOC_KIND_LABELS, type Pack } from "./pack-types";
 import type { Coverage, Outline } from "./schemas";
 
 // Engine rules: generic on purpose. Anything topic-specific lives in the pack.
@@ -7,6 +7,7 @@ const ENGINE_RULES = `You build short workplace trainings from one organization'
 
 Grounding rules (non-negotiable):
 - Use only facts stated in the knowledge base. Never add policy, numbers, steps, or advice from general knowledge.
+- Do not add your own tips, emphasis, or implications (for example "don't wait for them to bring it up" or "every time") unless a section says so.
 - Every claim you make must be traceable to a numbered section. Cite sections by their ref exactly as written, e.g. "doc-id#2.2". Glossary terms are cited as "glossary#Term".
 - Citation quotes must be copied word-for-word from the cited section (short, under 25 words). Do not paraphrase inside a quote.
 - If the knowledge base does not cover something, say so plainly. Do not fill gaps.
@@ -25,7 +26,8 @@ export function packContext(pack: Pack) {
         .filter((s) => s.docId === d.id)
         .map((s) => `[${s.ref}] ${s.number} ${s.title}\n${s.text}`)
         .join("\n\n");
-      return `=== DOCUMENT ${d.id}: ${d.title} ===\n${secs}`;
+      const kind = d.kind ? ` (${DOC_KIND_LABELS[d.kind]})` : "";
+      return `=== DOCUMENT ${d.id}${kind}: ${d.title} ===\n${secs}`;
     })
     .join("\n\n");
 
@@ -118,3 +120,30 @@ export function verifyPrompt(claims: { claimId: string; claim: string; source: s
     .join("\n\n");
 }
 
+
+// ---------- Pack builder ----------
+export const SECTION_SYSTEM = `You split workplace documents (SOPs, policies, guidelines) into numbered sections so each part can be cited.
+
+Rules:
+- Do not rewrite, summarize, or reorder anything. You only say where each section starts.
+- For each section give: a number ("1", "2", "2.1" for a subsection), a short title, and an anchor: the first 6-12 words of that section copied EXACTLY, character for character, from the document.
+- Number sections from 1. If the document opens with a title line, section 1 starts right after it (at the first heading or paragraph); otherwise section 1 starts at the very beginning. Never give a title line a section of its own.
+- Use the document's own headings when it has them (the heading line is the anchor and its text is the title). Otherwise group related paragraphs into sections of roughly 1-3 paragraphs with descriptive titles.
+- Use subsections (2.1, 2.2) only when the document clearly nests topics.
+- Keep sections in document order.`;
+
+export function sectionPrompt(title: string, text: string) {
+  return `Document title: ${title}\n\n=== DOCUMENT START ===\n${text}\n=== DOCUMENT END ===`;
+}
+
+export const SUGGEST_SYSTEM = `You help set up a training knowledge base from an organization's own documents. Draft the pack settings a reviewer will edit and approve.
+
+- Base everything on the documents. Glossary definitions must use the documents' own wording; include only terms the documents define or clearly explain (up to 10).
+- Audience roles: the people the documents tell to do things (2-4 roles).
+- Guardrails: only extra rules the documents imply (for example a required disclaimer, escalation language, or something staff must never do). Do not repeat generic grounding rules.
+- Never-say: words or claims that would overstate or contradict the documents (for example "guaranteed" when the documents describe limits). Keep it short.
+- Starter prompts: three short requests the documents can fully support, each starting "Build a short training on".`;
+
+export function suggestPrompt(docs: { title: string; markdown: string }[]) {
+  return docs.map((d) => `=== ${d.title} ===\n${d.markdown}`).join("\n\n");
+}

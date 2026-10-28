@@ -1,4 +1,4 @@
-import { loadPack } from "@/lib/packs";
+import { resolvePack } from "@/lib/resolve-pack";
 import { callStructured } from "@/lib/claude";
 import { MODELS, EFFORT } from "@/lib/config";
 import { Coverage, Outline } from "@/lib/schemas";
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     if (!request) return badRequest("Missing request.");
     const coverage = Coverage.safeParse(body.coverage);
     if (!coverage.success || !coverage.data.canBuild) return badRequest("Run a coverage check that can build first.");
-    const pack = await loadPack(String(body.pack));
+    const pack = await resolvePack(body);
     const role = pack.audience.some((a) => a.role === body.role) ? String(body.role) : pack.audience[0].role;
 
     const { data } = await callStructured({

@@ -35,11 +35,17 @@ export type Section = {
   text: string;
 };
 
+export type DocKind = "sop" | "policy" | "guideline";
+
+export const DOC_KIND_LABELS: Record<DocKind, string> = { sop: "SOP", policy: "Policy", guideline: "Guideline" };
+
 export type Pack = PackConfig & {
-  docs: { id: string; title: string }[];
+  docs: { id: string; title: string; kind?: DocKind }[];
   sections: Section[];
   // Example trainings for illustration and a reliable live demo. Never fed back to the AI.
   samples: GeneratedTraining[];
+  // Packs created in the pack builder live in the browser and are sent with each request.
+  custom?: boolean;
 };
 
 // "SOP-104: Customer Footage Requests" + "2.2" -> "SOP-104 §2.2"

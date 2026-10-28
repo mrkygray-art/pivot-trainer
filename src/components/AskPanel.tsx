@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { Pack } from "@/lib/pack-types";
+import { DOC_KIND_LABELS, type Pack } from "@/lib/pack-types";
 import type { GeneratedTraining } from "@/lib/schemas";
 import { storage } from "@/lib/storage";
 import { speechSupported, startDictation } from "@/lib/speech";
@@ -15,6 +15,11 @@ export default function AskPanel(props: {
   busy: boolean;
   onSubmit: () => void;
   onOpenTraining: (g: GeneratedTraining) => void;
+  onNewPack: () => void;
+  // Only for packs made in the builder.
+  onEditPack?: () => void;
+  onExportPack?: () => void;
+  onDeletePack?: () => void;
 }) {
   const { pack, request, setRequest, role, setRole, busy, onSubmit, onOpenTraining } = props;
   const [listening, setListening] = useState(false);
@@ -108,16 +113,18 @@ export default function AskPanel(props: {
         </div>
       </form>
 
-      <div className="mt-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Try one</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {pack.starterPrompts.map((p) => (
-            <button key={p} type="button" onClick={() => setRequest(p)} className="pk-btn-ghost text-sm font-medium">
-              {p}
-            </button>
-          ))}
+      {pack.starterPrompts.length > 0 && (
+        <div className="mt-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Try one</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {pack.starterPrompts.map((p) => (
+              <button key={p} type="button" onClick={() => setRequest(p)} className="pk-btn-ghost text-sm font-medium">
+                {p}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {(pack.samples.length > 0 || last) && (
         <div className="mt-8">
@@ -133,16 +140,49 @@ export default function AskPanel(props: {
         </div>
       )}
 
-      <details className="mt-8 text-sm text-neutral-600">
+      <details className="mt-8 text-sm text-neutral-600" open={pack.custom}>
         <summary className="cursor-pointer font-semibold">What&apos;s in this pack?</summary>
         <ul className="mt-2 list-disc pl-5">
           {pack.docs.map((d) => (
-            <li key={d.id}>{d.title}</li>
+            <li key={d.id}>
+              {d.kind && <span className="font-semibold">{DOC_KIND_LABELS[d.kind]}: </span>}
+              {d.title} ({pack.sections.filter((s) => s.docId === d.id).length} sections)
+            </li>
           ))}
           <li>Glossary of {pack.glossary.length} approved terms</li>
+          <li>
+            {pack.guardrails.length} guardrails · {pack.neverSay.length} never-say phrases · roles: {pack.audience.map((a) => a.role).join(", ")}
+          </li>
         </ul>
         <p className="mt-2">Tone: {pack.style.tone}. Reading level: {pack.style.readingLevel}.</p>
+        {pack.custom && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button className="pk-btn-ghost px-3 py-1.5 text-sm" onClick={props.onEditPack}>
+              Edit documents and rules
+            </button>
+            <button className="pk-btn-ghost px-3 py-1.5 text-sm" onClick={props.onExportPack}>
+              Export pack file
+            </button>
+            <button className="px-3 py-1.5 text-sm text-neutral-500 hover:text-red-700" onClick={props.onDeletePack}>
+              Delete pack
+            </button>
+          </div>
+        )}
       </details>
+
+      {!pack.custom && (
+        <div className="pk-card mt-8 flex flex-wrap items-center justify-between gap-3 p-5">
+          <div className="max-w-xl">
+            <p className="font-bold">Have your own SOPs, policies, or guidelines?</p>
+            <p className="text-sm text-neutral-600">
+              Set up a knowledge base first: add documents, check the citable sections, and set the rules. Then build trainings from it.
+            </p>
+          </div>
+          <button className="pk-btn" onClick={props.onNewPack}>
+            + Create a content pack
+          </button>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { loadPack } from "@/lib/packs";
+import { resolvePack } from "@/lib/resolve-pack";
 import { callStructured } from "@/lib/claude";
 import { MODELS, EFFORT } from "@/lib/config";
 import { Outline, trainingSchemaFor, Verification, type Flag, type GeneratedTraining, type Training } from "@/lib/schemas";
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     if (!request) return badRequest("Missing request.");
     const outline = Outline.safeParse(body.outline);
     if (!outline.success) return badRequest("Approve an outline first.");
-    const pack = await loadPack(String(body.pack));
+    const pack = await resolvePack(body);
 
     // 1. Generate (Opus).
     const { data } = await callStructured({
