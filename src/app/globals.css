@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
+/* Pack theme variables are set inline on the app shell from pack.json. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pk-primary: #0b5fff;
+  --pk-accent: #ff6b2c;
+  --pk-bg: #f7f8fa;
+  --pk-radius: 6px;
+  --pk-font: var(--font-geist-sans);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-primary: var(--pk-primary);
+  --color-accent: var(--pk-accent);
+  --color-page: var(--pk-bg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-serif);
+  --radius-pk: var(--pk-radius);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: #1c1c21;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.pk-shell {
+  background: var(--pk-bg);
+  font-family: var(--pk-font), system-ui, sans-serif;
+  transition: background-color 400ms ease;
+}
+
+.pk-card {
+  background: white;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  border-radius: var(--pk-radius);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.pk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--pk-radius);
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  background: var(--pk-primary);
+  color: white;
+  transition: filter 150ms, opacity 150ms;
+}
+.pk-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.pk-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pk-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--pk-radius);
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  color: var(--pk-primary);
+  border: 1px solid color-mix(in srgb, var(--pk-primary) 35%, transparent);
+  background: white;
+}
+.pk-btn-ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--pk-primary) 6%, white);
+}
+.pk-btn-ghost:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pk-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--pk-primary);
+  background: color-mix(in srgb, var(--pk-primary) 9%, white);
+  border: 1px solid color-mix(in srgb, var(--pk-primary) 20%, transparent);
+}
+button.pk-chip:hover {
+  background: color-mix(in srgb, var(--pk-primary) 16%, white);
+}
+
+.pk-heading {
+  font-family: var(--pk-font), system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+mark.pk-quote {
+  background: color-mix(in srgb, var(--pk-accent) 28%, white);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+.flip-inner {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+}
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
 }

@@ -1,0 +1,333 @@
+{
+  "training": {
+    "title": "Handling a Customer Footage Request",
+    "summary": "A step-by-step training for field techs on SOP-104. Log the request first. Verify the requestor. Get written approval from an authorized contact. Escalate police requests. Export only the approved range, protect and name the file, sign the custody log, release to the named person, and close the ticket.",
+    "slides": [
+      {
+        "id": "s1",
+        "title": "Log the Request First",
+        "bullets": [
+          "Treat every footage request the same until the requestor is verified.",
+          "Before doing anything else, open a Footage Request ticket.",
+          "Record the requestor's name, phone number, site, camera or area, and date and time range.",
+          "Do not say whether footage exists. Say: \"I have logged your request and the site's authorized contact will review it.\""
+        ],
+        "narration": "A footage request can come from anyone. A customer employee, a property manager, an adjuster, or the public. Your first move is to open a Footage Request ticket and record the details. Do not tell the requestor whether footage exists until the request is approved.",
+        "citations": [
+          {
+            "ref": "footage-request-sop#2.1",
+            "quote": "Treat every request the same way until the requestor is verified."
+          },
+          {
+            "ref": "footage-request-sop#2.2",
+            "quote": "Before doing anything else, open a Footage Request ticket."
+          },
+          {
+            "ref": "footage-request-sop#2.3",
+            "quote": "Do not tell the requestor whether footage of the event exists until the request is approved."
+          },
+          {
+            "ref": "glossary#Footage request",
+            "quote": "Any request, from anyone, for a copy of recorded video from a customer site."
+          },
+          {
+            "ref": "glossary#Requestor",
+            "quote": "They must be verified before any work starts."
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "title": "Verify and Get Written Approval",
+        "bullets": [
+          "Call the requestor back on the number in the customer's site record, not the number they gave you.",
+          "If the requestor is not on the site record, the request goes to an authorized contact.",
+          "Only an authorized contact can approve a release. Approval must be in writing, by email or in the ticket.",
+          "No approval in 5 business days? The project manager contacts the authorized contact directly."
+        ],
+        "narration": "Verify the requestor by calling the number on the site record. Only an authorized contact named on the site record can approve a release. Verbal approval is not enough. Most recorders overwrite video after 30 days, so the project manager follows up if approval is slow.",
+        "citations": [
+          {
+            "ref": "footage-request-sop#3.1",
+            "quote": "Call the requestor back using the phone number on the customer's site record, not the number they gave you."
+          },
+          {
+            "ref": "footage-request-sop#3.2",
+            "quote": "Approval must be in writing, by email or in the ticket. Verbal approval is not enough."
+          },
+          {
+            "ref": "footage-request-sop#3.4",
+            "quote": "If approval has not arrived within 5 business days, the project manager contacts the authorized contact directly so footage is not lost."
+          },
+          {
+            "ref": "glossary#Authorized contact",
+            "quote": "A person named on the customer's site record who may approve footage releases."
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "title": "Police and Agency Requests",
+        "bullets": [
+          "If police or another agency asks for footage, do not export anything yourself.",
+          "Escalate the ticket to your project manager within 1 business day.",
+          "The project manager coordinates with the customer."
+        ],
+        "narration": "Police and agency requests follow a different path. You do not export. You escalate the ticket to your project manager within 1 business day. The project manager handles the customer from there.",
+        "citations": [
+          {
+            "ref": "footage-request-sop#3.3",
+            "quote": "If police or another agency asks for footage, do not export anything yourself. Escalate the ticket to your project manager within 1 business day."
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "title": "Export and Protect the File",
+        "bullets": [
+          "Export only the cameras and time range in the written approval.",
+          "A request for more is a new request. It needs new approval.",
+          "Save exports to an encrypted drive or the Harborline secure share. Never email them or use a personal messaging app.",
+          "Name the file: ticket number, site code, camera, date. Example: FR-2231_SITE14_CAM3_2026-03-02."
+        ],
+        "narration": "An export copies recorded video out of the recorder into a file for release. Stay inside the approved cameras and time range. Protect the file on an encrypted drive or the Harborline secure share. Name it with the ticket number, site code, camera, and date.",
+        "citations": [
+          {
+            "ref": "footage-request-sop#4.1",
+            "quote": "Export only the cameras and the time range in the written approval."
+          },
+          {
+            "ref": "footage-request-sop#4.2",
+            "quote": "Never send footage as an email attachment or through a personal messaging app."
+          },
+          {
+            "ref": "footage-request-sop#4.3",
+            "quote": "Name each export with the ticket number, site code, camera, and date"
+          },
+          {
+            "ref": "glossary#Export",
+            "quote": "Copying recorded video out of the recorder into a file for release."
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "title": "Custody Log, Release, and Closing",
+        "bullets": [
+          "Everyone who touches the export signs the custody log in the ticket: name, date, time, and what they did.",
+          "Release the export only to the person named in the written approval.",
+          "Record how and when it was delivered.",
+          "Close the ticket only after the custody log is complete and delivery is recorded. Keep it for 3 years."
+        ],
+        "narration": "The custody log tracks every person who handled the export, and when. Sign it each time you touch the file. Release only to the person named in the written approval, and record the delivery. Then close the ticket.",
+        "citations": [
+          {
+            "ref": "footage-request-sop#5.1",
+            "quote": "Every person who touches the export signs the custody log in the ticket with their name, date, time, and what they did."
+          },
+          {
+            "ref": "footage-request-sop#5.2",
+            "quote": "Release the export only to the person named in the written approval. Record how and when it was delivered."
+          },
+          {
+            "ref": "footage-request-sop#5.3",
+            "quote": "Close the ticket only after the custody log is complete and the delivery is recorded. Keep the ticket for 3 years."
+          },
+          {
+            "ref": "glossary#Custody log",
+            "quote": "The record of every person who handled an export, and when."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "q1",
+        "question": "A property manager calls asking for video from last night. What do you do first?",
+        "choices": [
+          "Check the recorder to see if footage exists.",
+          "Open a Footage Request ticket and record the details.",
+          "Tell them footage exists and you will send it soon.",
+          "Export the footage so it is not overwritten."
+        ],
+        "correctIndex": 1,
+        "explanation": "Logging comes first. Before doing anything else, open a Footage Request ticket and record the requestor's name, phone, site, camera or area, and time range.",
+        "sourceSlideId": "s1",
+        "citations": [
+          {
+            "ref": "footage-request-sop#2.2",
+            "quote": "Before doing anything else, open a Footage Request ticket."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "How do you verify the requestor?",
+        "choices": [
+          "Call back on the number they gave you.",
+          "Ask them to email a photo ID.",
+          "Call back on the number in the customer's site record.",
+          "Text them a code on their phone."
+        ],
+        "correctIndex": 2,
+        "explanation": "Use the phone number on the customer's site record, not the number the requestor gave you.",
+        "sourceSlideId": "s2",
+        "citations": [
+          {
+            "ref": "footage-request-sop#3.1",
+            "quote": "Call the requestor back using the phone number on the customer's site record, not the number they gave you."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "An authorized contact approves a release over the phone. Can you export?",
+        "choices": [
+          "Yes. A phone approval from an authorized contact is enough.",
+          "No. Approval must be in writing, by email or in the ticket.",
+          "Yes, if you note the call in your phone notes.",
+          "Yes, if the requestor is also on the site record."
+        ],
+        "correctIndex": 1,
+        "explanation": "Only an authorized contact can approve, and the approval must be written. Verbal approval is not enough.",
+        "sourceSlideId": "s2",
+        "citations": [
+          {
+            "ref": "footage-request-sop#3.2",
+            "quote": "Approval must be in writing, by email or in the ticket. Verbal approval is not enough."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "question": "A police officer asks you for footage on site. What do you do?",
+        "choices": [
+          "Export it right away for the officer.",
+          "Do not export. Escalate the ticket to your project manager within 1 business day.",
+          "Export it, then tell your project manager.",
+          "Ask the officer to call the customer, then export."
+        ],
+        "correctIndex": 1,
+        "explanation": "For police or agency requests, do not export anything yourself. Escalate to your project manager within 1 business day. The project manager coordinates with the customer.",
+        "sourceSlideId": "s3",
+        "citations": [
+          {
+            "ref": "footage-request-sop#3.3",
+            "quote": "If police or another agency asks for footage, do not export anything yourself. Escalate the ticket to your project manager within 1 business day."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "question": "Where can an approved export be saved?",
+        "choices": [
+          "As an email attachment to the requestor.",
+          "In a personal messaging app.",
+          "On an encrypted drive or the Harborline secure share.",
+          "On your phone's camera roll."
+        ],
+        "correctIndex": 2,
+        "explanation": "Exports go to an encrypted drive or the Harborline secure share. Never send footage as an email attachment or through a personal messaging app.",
+        "sourceSlideId": "s4",
+        "citations": [
+          {
+            "ref": "footage-request-sop#4.2",
+            "quote": "Exports must be saved to an encrypted drive or the Harborline secure share."
+          }
+        ]
+      }
+    ],
+    "activity": {
+      "type": "process_flow",
+      "title": "Footage Request: Step by Step",
+      "intro": "Watch each step of a footage request light up in order. Then click any step to read what you do there.",
+      "steps": [
+        {
+          "label": "1. Log the request",
+          "detail": "Open a Footage Request ticket first. Record name, phone, site, camera or area, and time range. Do not confirm whether footage exists.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#2.2",
+              "quote": "Before doing anything else, open a Footage Request ticket."
+            },
+            {
+              "ref": "footage-request-sop#2.3",
+              "quote": "Do not tell the requestor whether footage of the event exists until the request is approved."
+            }
+          ]
+        },
+        {
+          "label": "2. Verify the requestor",
+          "detail": "Call back on the number in the customer's site record. If they are not on the record, the request goes to an authorized contact. Police request? Do not export. Escalate to your project manager within 1 business day.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#3.1",
+              "quote": "If they are not on the site record, the request must go to an authorized contact."
+            },
+            {
+              "ref": "footage-request-sop#3.3",
+              "quote": "Escalate the ticket to your project manager within 1 business day."
+            }
+          ]
+        },
+        {
+          "label": "3. Get written approval",
+          "detail": "Only an authorized contact on the site record can approve. Approval must be by email or in the ticket. Verbal approval is not enough.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#3.2",
+              "quote": "Only an authorized contact named on the site record can approve a release."
+            }
+          ]
+        },
+        {
+          "label": "4. Export the approved range",
+          "detail": "Export only the cameras and time range in the written approval. Save to an encrypted drive or the Harborline secure share. Name it with ticket number, site code, camera, and date.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#4.1",
+              "quote": "Export only the cameras and the time range in the written approval."
+            },
+            {
+              "ref": "footage-request-sop#4.2",
+              "quote": "Exports must be saved to an encrypted drive or the Harborline secure share."
+            },
+            {
+              "ref": "footage-request-sop#4.3",
+              "quote": "Name each export with the ticket number, site code, camera, and date"
+            }
+          ]
+        },
+        {
+          "label": "5. Sign the custody log and release",
+          "detail": "Sign the custody log each time you touch the export. Release only to the person named in the written approval. Record how and when it was delivered.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#5.1",
+              "quote": "Every person who touches the export signs the custody log in the ticket with their name, date, time, and what they did."
+            },
+            {
+              "ref": "footage-request-sop#5.2",
+              "quote": "Release the export only to the person named in the written approval."
+            }
+          ]
+        },
+        {
+          "label": "6. Close the ticket",
+          "detail": "Close only after the custody log is complete and delivery is recorded. Keep the ticket for 3 years.",
+          "citations": [
+            {
+              "ref": "footage-request-sop#5.3",
+              "quote": "Close the ticket only after the custody log is complete and the delivery is recorded. Keep the ticket for 3 years."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "flags": [],
+  "packName": "security-sop",
+  "request": "Build a short training on handling a customer footage request",
+  "createdAt": "2026-10-28T09:39:39.983Z",
+  "verifiedBy": "claude-sonnet-5-5"
+}

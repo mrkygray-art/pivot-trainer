@@ -1,0 +1,377 @@
+{
+  "training": {
+    "title": "When an Employee Raises a Concern: What to Say and Do",
+    "summary": "A short training for people managers at Cedarline Outfitters on responding well when an employee raises a concern. It covers why your response matters, how to make space and listen, what not to promise, how to write it down and hand it off to the People Team, and how to keep things the same in the weeks after. This is training, not legal advice. For any specific situation, contact the People Team.",
+    "slides": [
+      {
+        "id": "s1",
+        "title": "Why How You Respond Matters",
+        "bullets": [
+          "We can only fix problems we hear about.",
+          "People speak up only if they trust nothing bad will happen to them.",
+          "Protected activity includes raising a good-faith concern about conduct, safety, pay, or treatment.",
+          "A concern that turns out to be wrong is still protected if it was raised in good faith."
+        ],
+        "narration": "Your response is where trust is built or lost. Employees only speak up when they trust that nothing bad will happen to them for doing so. A concern raised in good faith is protected, even if it later turns out to be wrong. Retaliation breaks trust, even when the original concern is unfounded.",
+        "citations": [
+          {
+            "ref": "anti-retaliation-policy#1",
+            "quote": "We can only fix problems we hear about."
+          },
+          {
+            "ref": "anti-retaliation-policy#2.1",
+            "quote": "Protected activity includes raising a good-faith concern about conduct, safety, pay, or treatment"
+          },
+          {
+            "ref": "anti-retaliation-policy#2.2",
+            "quote": "A concern that turns out to be wrong is still protected."
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "title": "In the Moment: Make Space, Listen, Thank",
+        "bullets": [
+          "Move to a private place as soon as you reasonably can. If you can't talk right then, set a time within the same day.",
+          "Let the employee finish. Don't interrupt, argue, or defend the person they describe.",
+          "Ask open questions like \"What happened next?\" and \"Who else was there?\"",
+          "Thank them, and say clearly that raising a concern will not be held against them."
+        ],
+        "narration": "When someone says they want to raise a concern, your first job is to give them time and a private space. Then listen fully, without arguing or defending anyone. Open questions help them tell the story in their own words. Before you finish, thank them and tell them plainly that speaking up will not be held against them.",
+        "citations": [
+          {
+            "ref": "concern-response-guide#1.1",
+            "quote": "move to a private place as soon as you reasonably can"
+          },
+          {
+            "ref": "concern-response-guide#1.2",
+            "quote": "Let the employee finish. Do not interrupt, argue, or defend the person they are describing."
+          },
+          {
+            "ref": "concern-response-guide#1.3",
+            "quote": "Say clearly that raising a concern will not be held against them."
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "title": "What Not to Say or Promise",
+        "bullets": [
+          "Don't promise a specific outcome.",
+          "Don't promise complete confidentiality. The People Team may need to speak with others to resolve the concern.",
+          "Do say you'll keep it as private as possible and share it only with people who need to know.",
+          "Don't say whether you believe the concern."
+        ],
+        "narration": "It's natural to want to reassure someone, but some promises can't be kept. You can't promise a specific outcome or complete confidentiality, because the People Team may need to talk with others. You can say the concern will be kept as private as possible. And stay neutral: don't say whether you believe it.",
+        "citations": [
+          {
+            "ref": "concern-response-guide#1.4",
+            "quote": "Do not promise a specific outcome, do not promise complete confidentiality, and do not say whether you believe the concern."
+          },
+          {
+            "ref": "anti-retaliation-policy#4.3",
+            "quote": "Concerns are kept as private as possible and shared only with people who need to know."
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "title": "Write It Down and Hand It Off",
+        "bullets": [
+          "Same day: write down what they told you, in their words where possible, with date, time, and anyone named. Facts only, no opinions.",
+          "Send your notes to the People Team within 1 business day using the Concern Intake form.",
+          "Don't investigate, and don't contact the people named in the concern.",
+          "Tell the employee you've passed it on and someone from the People Team will follow up."
+        ],
+        "narration": "Your role is to listen, document, and hand off, not to investigate. Write down the facts the same day and send them to the People Team within one business day using the Concern Intake form. Don't reach out to anyone named in the concern. Then let the employee know what happens next, so they aren't left wondering.",
+        "citations": [
+          {
+            "ref": "concern-response-guide#2.1",
+            "quote": "write down what the employee told you, in their words where possible, with the date, time, and anyone they named."
+          },
+          {
+            "ref": "concern-response-guide#2.2",
+            "quote": "Do not contact the people named in the concern."
+          },
+          {
+            "ref": "concern-response-guide#2.3",
+            "quote": "someone from the People Team will follow up with them."
+          },
+          {
+            "ref": "anti-retaliation-policy#4.1",
+            "quote": "Managers do not investigate concerns. They listen, document, and hand off to the People Team."
+          },
+          {
+            "ref": "anti-retaliation-policy#4.2",
+            "quote": "must report it to the People Team within 1 business day."
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "title": "The Weeks After: Keep Things the Same",
+        "bullets": [
+          "Keep their schedule, assignments, and inclusion the same as before. Watch for coworkers excluding them.",
+          "Retaliation can be quiet: worse shifts, being left out, the silent treatment. If it could discourage a reasonable employee from speaking up, it counts.",
+          "Before any discipline, schedule change, or review rating for someone who raised a concern in the last 12 months, check with the People Team first.",
+          "Check in privately after two weeks, and report any signs of retaliation within 1 business day."
+        ],
+        "narration": "What happens after the conversation matters just as much as the conversation itself. Keep things steady for the employee and watch for subtle exclusion by others. Any change soon after a concern will be looked at closely, so check with the People Team first. After two weeks, check in privately and ask how things are going on the team.",
+        "citations": [
+          {
+            "ref": "concern-response-guide#3.1",
+            "quote": "Keep the employee's schedule, assignments, and inclusion the same as before."
+          },
+          {
+            "ref": "concern-response-guide#3.2",
+            "quote": "Before any discipline, schedule change, or review rating for this employee, check with the People Team first"
+          },
+          {
+            "ref": "concern-response-guide#3.3",
+            "quote": "Two weeks after the concern, check in with the employee privately"
+          },
+          {
+            "ref": "anti-retaliation-policy#3.2",
+            "quote": "If it could discourage a reasonable employee from speaking up, it counts."
+          },
+          {
+            "ref": "anti-retaliation-policy#3.3",
+            "quote": "An adverse action soon after a concern is raised will be looked at closely."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "id": "q1",
+        "question": "Priya raised a concern about her pay. The People Team later found her pay was correct. She honestly believed there was a problem. Is her concern still protected?",
+        "choices": [
+          "Yes. She honestly believed it was true, so it is still protected.",
+          "No. Only concerns that turn out to be true are protected.",
+          "Only if a coworker backs up her concern.",
+          "No. Once a concern is found to be wrong, protection ends."
+        ],
+        "correctIndex": 0,
+        "explanation": "Good faith means honestly believing the concern is true. A concern that turns out to be wrong is still protected. Only knowingly false reports are handled differently, and the People Team handles those.",
+        "sourceSlideId": "s1",
+        "citations": [
+          {
+            "ref": "anti-retaliation-policy#2.2",
+            "quote": "A concern that turns out to be wrong is still protected."
+          },
+          {
+            "ref": "glossary#Good faith",
+            "quote": "Honestly believing the concern is true, even if it turns out not to be."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "An employee finishes sharing a concern and asks you to keep it secret. Which response is best?",
+        "choices": [
+          "\"Don't worry, this stays just between us. I promise.\"",
+          "\"Thank you for telling me. This won't be held against you. I'll keep it as private as I can, but I can't promise complete confidentiality.\"",
+          "\"I believe you, and I'll make sure they're moved off your shift.\"",
+          "\"I'm sure it's just a misunderstanding, but I'll pass it along.\""
+        ],
+        "correctIndex": 1,
+        "explanation": "Thanking the employee and saying it won't be held against them builds trust. You can keep it as private as possible, but you can't promise complete confidentiality, a specific outcome, or say whether you believe it.",
+        "sourceSlideId": "s3",
+        "citations": [
+          {
+            "ref": "concern-response-guide#1.4",
+            "quote": "Do not promise a specific outcome, do not promise complete confidentiality, and do not say whether you believe the concern."
+          },
+          {
+            "ref": "concern-response-guide#1.3",
+            "quote": "Say clearly that raising a concern will not be held against them."
+          },
+          {
+            "ref": "anti-retaliation-policy#4.3",
+            "quote": "Managers must not promise complete confidentiality"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "After listening to a concern about a coworker, what should you do next?",
+        "choices": [
+          "Talk to the coworker named to hear their side.",
+          "Ask other team members what they've seen.",
+          "Write down the facts and send your notes to the People Team. Don't contact the people named.",
+          "Wait a few weeks to see if it happens again."
+        ],
+        "correctIndex": 2,
+        "explanation": "Managers don't investigate. Your job is to listen, document, and hand off to the People Team, without contacting the people named in the concern.",
+        "sourceSlideId": "s4",
+        "citations": [
+          {
+            "ref": "concern-response-guide#2.2",
+            "quote": "Do not contact the people named in the concern."
+          },
+          {
+            "ref": "anti-retaliation-policy#4.1",
+            "quote": "Managers do not investigate concerns. They listen, document, and hand off to the People Team."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "question": "How soon must you report a concern you receive to the People Team?",
+        "choices": [
+          "Within 1 week",
+          "Within 1 business day",
+          "At your next scheduled check-in with HR",
+          "Within 30 days"
+        ],
+        "correctIndex": 1,
+        "explanation": "A manager who receives a concern, or sees possible retaliation, must report it to the People Team within 1 business day.",
+        "sourceSlideId": "s4",
+        "citations": [
+          {
+            "ref": "anti-retaliation-policy#4.2",
+            "quote": "A manager who receives a concern, or sees possible retaliation, must report it to the People Team within 1 business day."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "question": "Five months ago, Leo raised a concern. Now you need to change his schedule for business reasons. What should you do first?",
+        "choices": [
+          "Make the change. Five months is long enough.",
+          "Ask Leo if he's okay with it, then make the change.",
+          "Check with the People Team before making the change.",
+          "Make the change, then let the People Team know afterward."
+        ],
+        "correctIndex": 2,
+        "explanation": "For any employee who raised a concern in the last 12 months, check with the People Team before any discipline, schedule change, or review rating. Timing is looked at closely.",
+        "sourceSlideId": "s5",
+        "citations": [
+          {
+            "ref": "anti-retaliation-policy#3.3",
+            "quote": "a manager must check with the People Team first."
+          }
+        ]
+      }
+    ],
+    "activity": {
+      "type": "scenario_chat",
+      "title": "Practice: Maya Speaks Up",
+      "intro": "You manage a Cedarline store. Maya, a sales associate, comes to you near the end of a busy afternoon. Choose the best reply at each step. This is practice, not legal advice. For real situations, contact the People Team.",
+      "otherPerson": "Maya, sales associate",
+      "steps": [
+        {
+          "message": "Hey, do you have a minute? I need to talk about something that's been happening on the closing shift.",
+          "choices": [
+            {
+              "text": "Of course. Let's step into the back office where we can talk privately.",
+              "best": true,
+              "feedback": "Great. Moving to a private place as soon as you reasonably can shows Maya you take this seriously."
+            },
+            {
+              "text": "Sure, go ahead. Just keep it quick, we're busy on the floor.",
+              "best": false,
+              "feedback": "Talking on the floor isn't private, and rushing her can make her hold back. Find a private place first."
+            },
+            {
+              "text": "Can it wait until our one-on-one next week?",
+              "best": false,
+              "feedback": "If you can't talk right then, set a time within the same day, not next week."
+            }
+          ],
+          "citations": [
+            {
+              "ref": "concern-response-guide#1.1",
+              "quote": "If you cannot talk right then, set a time within the same day."
+            }
+          ]
+        },
+        {
+          "message": "Jordan keeps making comments about my age in front of customers. Please don't tell anyone I said this.",
+          "choices": [
+            {
+              "text": "Thank you for telling me. Raising this won't be held against you. I'll keep it as private as I can, but I can't promise complete confidentiality, because the People Team may need to talk with others.",
+              "best": true,
+              "feedback": "This thanks her, reassures her, and is honest about what you can promise."
+            },
+            {
+              "text": "Don't worry, this stays just between us.",
+              "best": false,
+              "feedback": "Managers must not promise complete confidentiality. The People Team may need to speak with others to resolve it."
+            },
+            {
+              "text": "Are you sure? Jordan's usually great with everyone.",
+              "best": false,
+              "feedback": "Don't argue or defend the person she's describing, and don't say whether you believe the concern."
+            }
+          ],
+          "citations": [
+            {
+              "ref": "concern-response-guide#1.2",
+              "quote": "Do not interrupt, argue, or defend the person they are describing."
+            },
+            {
+              "ref": "concern-response-guide#1.3",
+              "quote": "Thank the employee for raising it."
+            },
+            {
+              "ref": "concern-response-guide#1.4",
+              "quote": "do not promise complete confidentiality, and do not say whether you believe the concern."
+            },
+            {
+              "ref": "anti-retaliation-policy#4.3",
+              "quote": "the People Team may need to speak with others to resolve the concern."
+            }
+          ]
+        },
+        {
+          "message": "Okay. So what happens now? Are you going to talk to Jordan?",
+          "choices": [
+            {
+              "text": "I'll write down what you told me and send it to the People Team. Someone from the People Team will follow up with you. I won't be talking to Jordan about this myself.",
+              "best": true,
+              "feedback": "Exactly. You document, hand off within 1 business day, and tell Maya what happens next, without investigating or contacting Jordan."
+            },
+            {
+              "text": "Yes, I'll pull Jordan aside tomorrow and get his side of the story.",
+              "best": false,
+              "feedback": "Managers don't investigate, and you shouldn't contact the people named in the concern. Hand it off to the People Team."
+            },
+            {
+              "text": "Let's keep an eye on it for a few weeks and see if it happens again.",
+              "best": false,
+              "feedback": "Waiting isn't an option. You must report it to the People Team within 1 business day."
+            }
+          ],
+          "citations": [
+            {
+              "ref": "concern-response-guide#2.1",
+              "quote": "Within the same day, write down what the employee told you"
+            },
+            {
+              "ref": "concern-response-guide#2.2",
+              "quote": "Do not contact the people named in the concern."
+            },
+            {
+              "ref": "concern-response-guide#2.3",
+              "quote": "someone from the People Team will follow up with them."
+            },
+            {
+              "ref": "anti-retaliation-policy#4.1",
+              "quote": "Managers do not investigate concerns."
+            },
+            {
+              "ref": "anti-retaliation-policy#4.2",
+              "quote": "must report it to the People Team within 1 business day."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "flags": [],
+  "packName": "hr-retaliation",
+  "request": "Build a short training on responding when an employee raises a concern",
+  "createdAt": "2026-10-28T09:34:20.008Z",
+  "verifiedBy": "claude-sonnet-5-5"
+}

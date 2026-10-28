@@ -1,0 +1,77 @@
+{
+  "name": "hr-retaliation",
+  "displayName": "HR: Anti-Retaliation",
+  "organization": "Cedarline Outfitters (fictional)",
+  "description": "People-manager guidance for a fictional retailer: preventing retaliation and responding when an employee raises a concern.",
+  "style": {
+    "tone": "warm, calm, respectful; speaks to managers as capable adults",
+    "readingLevel": "plain, 9th grade",
+    "sentenceLength": "short to medium",
+    "colors": {
+      "primary": "#2F6B4F",
+      "accent": "#C7793A",
+      "background": "#FBF8F3"
+    },
+    "logoText": "CEDARLINE",
+    "preferences": [
+      "lead with the why",
+      "use realistic workplace scenarios",
+      "never sound accusatory"
+    ],
+    "look": {
+      "font": "serif",
+      "corners": "soft"
+    }
+  },
+  "guardrails": [
+    "Answer only from the knowledge base.",
+    "Cite document and section for every slide and question.",
+    "If not covered, say it is not covered.",
+    "This is training, not legal advice. Point managers to People Team (HR) for specific situations.",
+    "Never suggest a manager investigate a concern on their own."
+  ],
+  "audience": [
+    {
+      "role": "people-manager",
+      "notes": "first-line and store managers; needs what to say and do in the moment"
+    },
+    {
+      "role": "senior-leader",
+      "notes": "needs escalation duties and how to model the policy"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Protected activity",
+      "definition": "Raising a good-faith concern, taking part in an investigation, or supporting a coworker who does."
+    },
+    {
+      "term": "Retaliation",
+      "definition": "Any adverse action taken because someone engaged in protected activity."
+    },
+    {
+      "term": "Adverse action",
+      "definition": "Anything that could discourage a reasonable employee from raising a concern, such as worse shifts, exclusion, or a sudden poor review."
+    },
+    {
+      "term": "Good faith",
+      "definition": "Honestly believing the concern is true, even if it turns out not to be."
+    },
+    {
+      "term": "People Team",
+      "definition": "Cedarline's HR department."
+    }
+  ],
+  "neverSay": [
+    "guaranteed",
+    "always confidential",
+    "troublemaker",
+    "drama",
+    "complainer"
+  ],
+  "starterPrompts": [
+    "Build a short training on responding when an employee raises a concern",
+    "Build a short training on what counts as retaliation",
+    "Build a short training on our parental leave policy"
+  ]
+}

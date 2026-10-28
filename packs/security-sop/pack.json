@@ -1,0 +1,79 @@
+{
+  "name": "security-sop",
+  "displayName": "Security SOP",
+  "organization": "Harborline Security Services (fictional)",
+  "description": "Field procedures for a fictional security integrator: customer footage requests and site credentials.",
+  "style": {
+    "tone": "direct, practical, field-ready",
+    "readingLevel": "plain, 8th grade",
+    "sentenceLength": "short",
+    "colors": {
+      "primary": "#0B5FFF",
+      "accent": "#FF6B2C",
+      "background": "#F7F8FA"
+    },
+    "logoText": "HARBORLINE",
+    "preferences": [
+      "short steps",
+      "use numbered procedures",
+      "no filler"
+    ],
+    "look": {
+      "font": "sans",
+      "corners": "sharp"
+    }
+  },
+  "guardrails": [
+    "Answer only from the knowledge base.",
+    "Cite document and section for every slide and question.",
+    "If not covered, say it is not covered.",
+    "Never tell a technician to release footage without the approvals the SOP requires."
+  ],
+  "audience": [
+    {
+      "role": "field-tech",
+      "notes": "hands-on, needs the exact procedure steps"
+    },
+    {
+      "role": "project-manager",
+      "notes": "needs approvals, records, and timelines"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Footage request",
+      "definition": "Any request, from anyone, for a copy of recorded video from a customer site."
+    },
+    {
+      "term": "Requestor",
+      "definition": "The person asking for footage. They must be verified before any work starts."
+    },
+    {
+      "term": "Authorized contact",
+      "definition": "A person named on the customer's site record who may approve footage releases."
+    },
+    {
+      "term": "Export",
+      "definition": "Copying recorded video out of the recorder into a file for release."
+    },
+    {
+      "term": "Custody log",
+      "definition": "The record of every person who handled an export, and when."
+    },
+    {
+      "term": "Credential",
+      "definition": "Any username, password, PIN, or key card that grants access to customer equipment."
+    }
+  ],
+  "neverSay": [
+    "guaranteed",
+    "always safe",
+    "no need to log",
+    "just send it"
+  ],
+  "starterPrompts": [
+    "Build a short training on handling a customer footage request",
+    "Build a short training on handling site credentials",
+    "Build a short training on drone patrol procedures"
+  ]
+}

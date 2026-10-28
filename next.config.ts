@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Packs are read from disk at request time; make sure Vercel ships them with the API routes.
+  outputFileTracingIncludes: {
+    "/api/**": ["./packs/**/*"],
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
