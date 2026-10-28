@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
-import type { Pack, PackConfig, Section } from "./pack-types";
+import type { DocKind, Pack, PackConfig, Section } from "./pack-types";
+import type { CustomPackData } from "./custom-pack";
 import type { GeneratedTraining } from "./schemas";
 import { glossarySections, parseSections } from "./sections";
 
@@ -42,4 +43,29 @@ async function loadSamples(dir: string): Promise<GeneratedTraining[]> {
     return [];
   }
   return Promise.all(files.map(async (f) => JSON.parse(await fs.readFile(path.join(samplesDir, f), "utf8"))));
+}
+
+function guessKind(title: string): DocKind {
+  if (/polic|^pol/i.test(title)) return "policy";
+  if (/guide/i.test(title)) return "guideline";
+  return "sop";
+}
+
+// A built-in pack as an editable working copy: the same shape as a pack made in the
+// app, so the sample can be added to (documents, terms, rules) during a visit.
+export async function loadPackAsData(name: string): Promise<{ pack: CustomPackData; training: GeneratedTraining | null }> {
+  if (!/^[a-z0-9-]+$/.test(name)) throw new Error(`Invalid pack name: ${name}`);
+  const dir = path.join(PACKS_DIR, name);
+  const config = JSON.parse(await fs.readFile(path.join(dir, "pack.json"), "utf8")) as PackConfig;
+  const docFiles = (await fs.readdir(path.join(dir, "docs"))).filter((f) => f.endsWith(".md")).sort();
+  const docs = await Promise.all(
+    docFiles.map(async (file) => {
+      const markdown = await fs.readFile(path.join(dir, "docs", file), "utf8");
+      const title = parseSections(file, markdown).title;
+      return { id: file.replace(/\.md$/, ""), title, kind: guessKind(title), markdown };
+    }),
+  );
+  const pack: CustomPackData = { ...config, name: `custom-sample-${name}`, docs };
+  const samples = await loadSamples(dir);
+  return { pack, training: samples[0] ?? null };
 }

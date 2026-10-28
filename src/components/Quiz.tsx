@@ -8,9 +8,9 @@ import FlagNote from "./FlagNote";
 
 type Props = {
   question: Question;
-  number: number;
-  remaining: number;
-  retry: boolean; // this question was missed before
+  mastered: number;
+  total: number;
+  retry: boolean; // this question was missed before: shuffle the answers
   slideNumber: number | null;
   flags: Flag[];
   onCorrect: () => void;
@@ -18,39 +18,57 @@ type Props = {
   onReviewSlide: () => void;
 };
 
-// Multiple choice with remediation: a miss explains why, links to the source
-// slide, and the question comes back later in the queue.
+function shuffledOrder(n: number) {
+  const order = Array.from({ length: n }, (_, i) => i);
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return order;
+}
+
+// Multiple choice. A miss explains why, links to the exact slide, and the question
+// comes back later with its answers in a new order.
 export default function Quiz(props: Props) {
-  const { question: q, number, remaining, retry, slideNumber, flags } = props;
-  const [picked, setPicked] = useState<number | null>(null);
+  const { question: q, mastered, total, retry, slideNumber, flags } = props;
+  const [order] = useState(() => (retry ? shuffledOrder(q.choices.length) : q.choices.map((_, i) => i)));
+  const [picked, setPicked] = useState<number | null>(null); // original choice index
   const [submitted, setSubmitted] = useState(false);
   const correct = submitted && picked === q.correctIndex;
 
   return (
     <motion.article key={q.id} className="pk-card p-6 sm:p-8" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-          Question {number} · {remaining} left
+        <p className="font-semibold text-primary" aria-live="polite">
+          {mastered} of {total} mastered
         </p>
-        {retry && <span className="pk-chip">Second try</span>}
+        {retry && <span className="pk-chip">A second look</span>}
       </div>
-      <h2 className="pk-heading mt-2 text-2xl font-bold">{q.question}</h2>
+      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-black/5" aria-hidden>
+        <div className="h-full rounded-full bg-primary transition-all duration-500" style={{ width: `${(mastered / total) * 100}%` }} />
+      </div>
+      <h2 className="pk-heading mt-4 text-2xl font-bold">{q.question}</h2>
 
       <fieldset className="mt-5 space-y-2" disabled={submitted}>
-        <legend className="sr-only">Choices</legend>
-        {q.choices.map((c, i) => {
+        <legend className="sr-only">Choose one answer</legend>
+        {order.map((i) => {
+          const c = q.choices[i];
           const isPicked = picked === i;
-          const showRight = submitted && i === q.correctIndex && correct;
+          const showRight = submitted && correct && i === q.correctIndex;
           const showWrong = submitted && isPicked && !correct;
           return (
             <label
               key={i}
-              className={`flex cursor-pointer items-start gap-3 rounded-[var(--pk-radius)] border-2 px-4 py-3 transition ${
-                showRight ? "border-emerald-500 bg-emerald-50" : showWrong ? "border-red-400 bg-red-50" : isPicked ? "border-primary bg-primary/5" : "border-black/10 hover:border-black/25"
+              className={`flex min-h-[44px] cursor-pointer items-start gap-3 rounded-xl border-2 px-4 py-3 transition ${
+                showRight ? "border-success bg-success-bg" : showWrong ? "border-[#B91C1C] bg-[#FDECEC]" : isPicked ? "border-primary bg-primary/5" : "border-line hover:border-[#9AA6B5]"
               }`}
             >
-              <input type="radio" name={q.id} className="mt-1 accent-[var(--pk-primary)]" checked={isPicked} onChange={() => setPicked(i)} />
-              <span>{c}</span>
+              <input type="radio" name={q.id} className="mt-1 h-5 w-5 accent-[var(--pk-primary)]" checked={isPicked} onChange={() => setPicked(i)} />
+              <span>
+                {c}
+                {showRight && <span className="ml-2 font-semibold text-success-ink">(correct)</span>}
+                {showWrong && <span className="ml-2 font-semibold text-[#7F1D1D]">(not this one)</span>}
+              </span>
             </label>
           );
         })}
@@ -58,14 +76,14 @@ export default function Quiz(props: Props) {
 
       {!submitted && (
         <button type="button" className="pk-btn mt-5" disabled={picked === null} onClick={() => setSubmitted(true)}>
-          Check answer
+          Check my answer
         </button>
       )}
 
       {submitted && correct && (
-        <motion.div className="mt-5 rounded-md bg-emerald-50 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <p className="font-semibold text-emerald-900">✓ Correct</p>
-          <p className="mt-1 text-emerald-900">{q.explanation}</p>
+        <motion.div className="mt-5 rounded-xl bg-success-bg p-4 text-success-ink" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <p className="font-semibold">✓ Correct</p>
+          <p className="mt-1">{q.explanation}</p>
           <CitationChips className="mt-2" citations={q.citations} />
           <button type="button" className="pk-btn mt-4" onClick={props.onCorrect}>
             Next →
@@ -74,19 +92,19 @@ export default function Quiz(props: Props) {
       )}
 
       {submitted && !correct && (
-        <motion.div className="mt-5 rounded-md bg-red-50 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <p className="font-semibold text-red-900">Not quite. Here&apos;s why:</p>
-          <p className="mt-1 text-red-900">{q.explanation}</p>
-          <p className="mt-2 text-sm text-red-900">This question will come back before you finish.</p>
+        <motion.div className="mt-5 rounded-xl bg-[#FDECEC] p-4 text-[#7F1D1D]" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <p className="font-semibold">Not quite. Here&apos;s why:</p>
+          <p className="mt-1">{q.explanation}</p>
+          <p className="mt-2">We&apos;ll ask this one again before you finish.</p>
           <CitationChips className="mt-2" citations={q.citations} />
           <div className="mt-4 flex flex-wrap gap-2">
             {slideNumber !== null && (
               <button type="button" className="pk-btn" onClick={props.onReviewSlide}>
-                Review slide {slideNumber} →
+                Take a second look at slide {slideNumber} →
               </button>
             )}
             <button type="button" className="pk-btn-ghost" onClick={props.onWrongContinue}>
-              Continue the quiz
+              Keep going
             </button>
           </div>
         </motion.div>

@@ -56,7 +56,7 @@ export default function ScenarioChat({ activity, onDone }: Props) {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-bold text-white">{name.charAt(0)}</span>
           <div>
             <p className="font-semibold leading-tight">{name}</p>
-            <p className="text-xs text-neutral-500">{activity.otherPerson}</p>
+            <p className="text-sm text-subtle">{activity.otherPerson}</p>
           </div>
         </div>
         <div className="max-h-[420px] min-h-[260px] space-y-3 overflow-y-auto p-4">
@@ -103,7 +103,7 @@ export default function ScenarioChat({ activity, onDone }: Props) {
 
       {!finished && !typing && (
         <div className="mt-4">
-          <p className="text-sm font-semibold text-neutral-600">How do you reply?</p>
+          <p className="text-sm font-semibold text-muted">How do you reply?</p>
           <div className="mt-2 space-y-2">
             {current.choices.map((c, i) => (
               <button

@@ -32,7 +32,7 @@ function Row({ id, index, text, state }: { id: number; index: number; text: stri
         isDragging ? "z-10 shadow-lg" : ""
       } ${state === "right" ? "border-emerald-400" : state === "wrong" ? "border-amber-400" : "border-black/10"}`}
     >
-      <span className="text-neutral-400" aria-hidden>
+      <span className="text-subtle" aria-hidden>
         ⋮⋮
       </span>
       <span className="font-bold text-primary">{index + 1}</span>
@@ -67,8 +67,8 @@ export default function SortActivity({ activity, onDone }: Props) {
 
   return (
     <div className="mx-auto max-w-xl">
-      <p className="text-neutral-700">{activity.instruction}</p>
-      <p className="mt-1 text-xs text-neutral-500">Drag to reorder, or focus an item and use Space plus the arrow keys.</p>
+      <p className="text-muted">{activity.instruction}</p>
+      <p className="mt-1 text-sm text-subtle">Drag to reorder, or focus an item and use Space plus the arrow keys.</p>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
         <SortableContext items={order} strategy={verticalListSortingStrategy}>
           <ol className="mt-4 space-y-2">

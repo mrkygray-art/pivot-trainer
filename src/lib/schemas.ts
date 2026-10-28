@@ -14,7 +14,8 @@ export type Citation = z.infer<typeof Citation>;
 // ---------- Coverage ----------
 export const Coverage = z.object({
   summary: z.string().describe("One or two plain sentences on what the knowledge base can and cannot support"),
-  canBuild: z.boolean().describe("True only if the covered topics are enough for a short training on the request"),
+  verdict: z.enum(["covered", "partly", "not_covered"]),
+  canBuild: z.boolean().describe("True for covered and partly; false for not_covered"),
   covered: z.array(
     z.object({
       topic: z.string(),

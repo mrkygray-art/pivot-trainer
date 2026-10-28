@@ -14,9 +14,5 @@ export const EFFORT = {
   suggest: "low",
 } as const;
 
-export const DEMO_LIMITS = {
-  minSlides: 3,
-  maxSlides: 5,
-  minQuestions: 3,
-  maxQuestions: 5,
-};
+// What one demo training contains. Read everywhere: Start screen, Step 3, prompts, quiz.
+export const DEMO_LIMITS = { slides: 5, activities: 1, questions: 5 } as const;

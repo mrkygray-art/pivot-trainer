@@ -31,7 +31,11 @@ export async function POST(req: Request) {
         .map((c) => ({ ...c, refs: c.refs.filter((r) => findSection(pack, r)) }))
         .filter((c) => c.refs.length > 0),
     };
-    if (coverage.covered.length === 0) coverage.canBuild = false;
+    if (coverage.covered.length === 0) {
+      coverage.canBuild = false;
+      coverage.verdict = "not_covered";
+    }
+    if (!coverage.canBuild) coverage.verdict = "not_covered";
 
     return Response.json({ coverage });
   } catch (err) {

@@ -27,7 +27,7 @@ export default function FlipCards({ activity, onDone }: Props) {
 
   return (
     <div>
-      <p className="text-sm text-neutral-600">
+      <p className="text-sm text-muted">
         Tap each card to see the approved definition. {seen.size}/{activity.cards.length} viewed.
       </p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

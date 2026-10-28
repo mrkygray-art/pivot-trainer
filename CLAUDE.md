@@ -10,6 +10,7 @@ Key paths:
 - `src/lib/` engine: schemas (Zod), prompts, Claude calls, code checks, pack loader
 - `src/app/api/` coverage, outline, generate (generate + code checks + verify)
 - `src/components/` fixed UI components; the AI only fills JSON
-- `src/components/builder/` Stage A pack builder (documents, sections, rules, review); custom packs live in localStorage
+- `src/components/flow/` the HR-facing flow (Start, Steps 1-4); working data is in-memory only, never browser storage
+- `ux-redesign.md` is the UI spec (screens, wording, tokens); `claude-training.md` is the engine spec + decision log
 
-Scripts (dev server on :3210): `node scripts/smoke.mjs`, `npx tsx scripts/tamper-test.mts`, `node scripts/e2e.mjs`, `node scripts/e2e-ask.mjs`, `node scripts/e2e-builder.mjs`.
+Scripts (dev server on :3210): `node scripts/smoke.mjs`, `npx tsx scripts/tamper-test.mts`, `node scripts/e2e-flow.mjs` (acceptance checklist from ux-redesign.md).

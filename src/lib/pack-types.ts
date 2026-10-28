@@ -50,7 +50,7 @@ export type Pack = PackConfig & {
 
 // "SOP-104: Customer Footage Requests" + "2.2" -> "SOP-104 §2.2"
 export function sectionLabel(s: Section) {
-  if (s.docId === "glossary") return `Glossary: ${s.title}`;
+  if (s.docId === "glossary") return `Key term: ${s.title}`;
   const short = s.docTitle.includes(":") ? s.docTitle.split(":")[0].trim() : s.docTitle;
   return `${short} §${s.number}`;
 }

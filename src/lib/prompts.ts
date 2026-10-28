@@ -65,7 +65,12 @@ export function coveragePrompt(request: string) {
 
 Check coverage BEFORE anything is generated. Break the request into the topics a short training on it would need. For each topic, decide whether the knowledge base actually covers it, and list the section refs that do.
 - Put a topic under notCovered if no section addresses it, even if it seems related.
-- If the request's main subject is not in the knowledge base at all, set canBuild to false and say so plainly in the summary.
+- Set verdict:
+  - "covered": everything the user explicitly asked for is in the knowledge base. Small related gaps the user did not ask about can still be listed under notCovered.
+  - "partly": the main subject is covered, but a part the user explicitly asked for is missing.
+  - "not_covered": the main subject is not in the knowledge base at all.
+- Set canBuild to true for "covered" and "partly", false for "not_covered".
+- Write the summary in plain, friendly words for a non-technical reader. Say "your documents", not "knowledge base".
 - Keep topics short (a few words each). Aim for 3-6 covered topics when the subject is covered.`;
 }
 
@@ -77,10 +82,10 @@ Coverage check result:
 ${JSON.stringify(coverage, null, 2)}
 
 Write a DEMO-length outline using only the covered topics.
-- ${DEMO_LIMITS.minSlides}-${DEMO_LIMITS.maxSlides} chapters (each becomes one slide).
+- Exactly ${DEMO_LIMITS.slides} chapters (each becomes one slide). If the covered material is thin, keep chapters short rather than inventing content.
 - Pick contentType by what the learner must be able to do: "procedural" (follow steps, approvals, records), "judgment" (respond well to people or situations: what to say, what to avoid, what would you do), or "terminology" (know the terms). Training on how to respond to a person is judgment, even if the source lists steps.
 - Pick ONE activity that fits: procedural -> "process_flow" or "sort"; judgment -> "scenario_chat" or "timeline"; terminology -> "flip_cards".
-- Plan ${DEMO_LIMITS.minQuestions}-${DEMO_LIMITS.maxQuestions} quiz questions, each tied to one section ref.`;
+- Plan exactly ${DEMO_LIMITS.questions} quiz questions, each tied to one section ref.`;
 }
 
 // How each fixed component behaves, so intros and instructions match the UI.

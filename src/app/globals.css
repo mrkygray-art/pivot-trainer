@@ -1,40 +1,91 @@
 @import "tailwindcss";
 
-/* Pack theme variables are set inline on the app shell from pack.json. */
+/*
+  App chrome uses fixed tokens (ux-redesign.md section 6). The generated lesson
+  overrides the --pk-* variables with the user's brand color and the sample's look,
+  so only the lesson and certificate change style.
+*/
 :root {
-  --pk-primary: #0b5fff;
-  --pk-accent: #ff6b2c;
-  --pk-bg: #f7f8fa;
-  --pk-radius: 6px;
-  --pk-font: var(--font-geist-sans);
+  --app-page: #f5f6f8;
+  --app-card: #ffffff;
+  --app-border: #d9dee5;
+  --app-ink: #16222e;
+  --app-muted: #3b4856;
+  --app-subtle: #4a5866;
+  --app-primary: #1b4fd6;
+  --app-primary-hover: #123a9e;
+  --app-soft: #e8eefc;
+
+  --pk-primary: var(--app-primary);
+  --pk-accent: #b45309;
+  --pk-bg: var(--app-page);
+  --pk-radius: 16px;
+  --pk-font: var(--font-inter);
 }
 
 @theme inline {
   --color-primary: var(--pk-primary);
   --color-accent: var(--pk-accent);
   --color-page: var(--pk-bg);
-  --font-sans: var(--font-geist-sans);
+  --color-ink: var(--app-ink);
+  --color-muted: var(--app-muted);
+  --color-subtle: var(--app-subtle);
+  --color-line: var(--app-border);
+  --color-soft: var(--app-soft);
+  --color-demo-bg: #fff3dc;
+  --color-demo-ink: #7a4300;
+  --color-success: #1b6b45;
+  --color-success-bg: #ddf1e5;
+  --color-success-ink: #124a2e;
+  --color-review-bg: #fff3dc;
+  --color-review-ink: #5e3600;
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-serif);
   --radius-pk: var(--pk-radius);
 }
 
-body {
-  color: #1c1c21;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+html {
+  font-size: 17px;
 }
 
-.pk-shell {
-  background: var(--pk-bg);
+body {
+  color: var(--app-ink);
+  background: var(--app-page);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+.app-heading {
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+:focus-visible {
+  outline: 3px solid var(--app-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* The generated lesson: themed by the user's brand color and the sample's look. */
+.pk-lesson {
   font-family: var(--pk-font), system-ui, sans-serif;
-  transition: background-color 400ms ease;
+}
+.pk-lesson h1,
+.pk-lesson h2,
+.pk-lesson h3,
+.pk-lesson .pk-heading {
+  font-family: var(--pk-font), system-ui, sans-serif;
 }
 
 .pk-card {
-  background: white;
-  border: 1px solid rgb(0 0 0 / 0.08);
+  background: var(--app-card);
+  border: 1px solid var(--app-border);
   border-radius: var(--pk-radius);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
 }
 
 .pk-btn {
@@ -42,15 +93,16 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: var(--pk-radius);
-  padding: 0.6rem 1.1rem;
+  min-height: 52px;
+  border-radius: 12px;
+  padding: 0.6rem 1.4rem;
   font-weight: 600;
   background: var(--pk-primary);
   color: white;
-  transition: filter 150ms, opacity 150ms;
+  transition: filter 150ms, opacity 150ms, background-color 150ms;
 }
 .pk-btn:hover:not(:disabled) {
-  filter: brightness(1.08);
+  filter: brightness(0.86);
 }
 .pk-btn:disabled {
   opacity: 0.45;
@@ -62,19 +114,30 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: var(--pk-radius);
-  padding: 0.55rem 1rem;
+  min-height: 44px;
+  border-radius: 12px;
+  padding: 0.5rem 1.1rem;
   font-weight: 600;
   color: var(--pk-primary);
-  border: 1px solid color-mix(in srgb, var(--pk-primary) 35%, transparent);
+  border: 1px solid var(--app-border);
   background: white;
 }
 .pk-btn-ghost:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--pk-primary) 6%, white);
+  background: color-mix(in srgb, var(--pk-primary) 7%, white);
 }
 .pk-btn-ghost:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.pk-link {
+  color: var(--app-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .pk-chip {
@@ -82,20 +145,60 @@ body {
   align-items: center;
   gap: 0.3rem;
   border-radius: 999px;
-  padding: 0.15rem 0.6rem;
-  font-size: 0.75rem;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--pk-primary);
   background: color-mix(in srgb, var(--pk-primary) 9%, white);
-  border: 1px solid color-mix(in srgb, var(--pk-primary) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pk-primary) 25%, transparent);
+}
+button.pk-chip {
+  min-height: 44px;
 }
 button.pk-chip:hover {
   background: color-mix(in srgb, var(--pk-primary) 16%, white);
 }
 
-.pk-heading {
-  font-family: var(--pk-font), system-ui, sans-serif;
-  letter-spacing: -0.01em;
+/* Radio and checkbox cards: real inputs, state shown by border + tint + check mark. */
+.choice-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border: 2px solid var(--app-border);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  background: white;
+  cursor: pointer;
+  min-height: 44px;
+}
+.choice-card:has(input:checked) {
+  border-color: var(--app-primary);
+  background: var(--app-soft);
+}
+.choice-card:has(input:focus-visible) {
+  outline: 3px solid var(--app-primary);
+  outline-offset: 2px;
+}
+.choice-card input {
+  margin-top: 0.3rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--app-primary);
+  flex-shrink: 0;
+}
+
+.app-input {
+  width: 100%;
+  border: 1px solid #b9c2ce;
+  border-radius: 10px;
+  background: white;
+  padding: 0.65rem 0.85rem;
+  min-height: 44px;
+  color: var(--app-ink);
+}
+.app-input:focus {
+  border-color: var(--app-primary);
+  outline: 2px solid var(--app-soft);
 }
 
 mark.pk-quote {

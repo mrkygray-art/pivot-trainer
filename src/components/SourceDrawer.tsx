@@ -58,7 +58,7 @@ export function SourceProvider({ pack, children }: { pack: Pack; children: React
           >
             <motion.aside
               role="dialog"
-              aria-label="Source"
+              aria-label="Where this came from"
               className="h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-xl"
               initial={{ x: 40 }}
               animate={{ x: 0 }}
@@ -67,7 +67,7 @@ export function SourceProvider({ pack, children }: { pack: Pack; children: React
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Source</p>
+                  <p className="text-sm font-semibold text-subtle">Where this came from</p>
                   <h2 className="pk-heading mt-1 text-xl font-bold">{section ? sectionLabel(section) : active.ref}</h2>
                 </div>
                 <button onClick={() => setActive(null)} className="pk-btn-ghost px-3 py-1 text-sm" aria-label="Close source">
@@ -77,13 +77,13 @@ export function SourceProvider({ pack, children }: { pack: Pack; children: React
               {section ? (
                 <>
                   <h3 className="mt-5 font-semibold">{section.title}</h3>
-                  <div className="mt-2 text-[15px] text-neutral-800">
+                  <div className="mt-2 text-[15px] text-ink">
                     <Highlighted text={section.text || section.title} quote={active.quote} />
                   </div>
-                  <p className="mt-6 text-xs text-neutral-500">From {pack.organization}. Highlighted text is the exact quote this item cites.</p>
+                  <p className="mt-6 text-sm text-subtle">From your documents. The highlighted words are the exact text this part of the lesson is based on.</p>
                 </>
               ) : (
-                <p className="mt-5 text-red-700">This citation doesn&apos;t match a section in the pack. It was flagged during checking.</p>
+                <p className="mt-5 text-red-700">We couldn&apos;t find this part in your documents. It is marked for a closer look.</p>
               )}
             </motion.aside>
           </motion.div>

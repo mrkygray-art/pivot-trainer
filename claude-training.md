@@ -6,6 +6,9 @@ app can produce a security SOP training, then pivot to an HR retaliation trainin
 
 This is an independent prototype. It is not affiliated with any training vendor.
 
+What the user sees and does is specified in `ux-redesign.md` (layout, wording,
+flow, visual tokens). This file covers the engine, rules, and decisions.
+
 ---
 
 ## LIVING FILE RULE (read this first)
@@ -36,7 +39,7 @@ How to do it (keep it easy):
 - Narration: ElevenLabs is out of v1. Every slide's JSON carries a `narration` text field now (also feeds the Video Package export), so voice can be added later without a rewrite.
 - Client-side PDF certificate
 - No login, no permissions, no enterprise features (keep it simple)
-- Storage: browser state or a simple table. No user accounts.
+- Storage: none. All working data lives in in-memory app state for the current visit; nothing is kept in a database, server storage, logs, or browser storage. Users keep a demo by downloading it as a JSON file.
 
 ---
 
@@ -62,26 +65,31 @@ How to do it (keep it easy):
 
 ## How the demo works (the easy workflow)
 
-**Stage A: Set up the knowledge base** (before any training is designed)
+Built for a non-technical HR user: one path, plain words, one main button per
+screen. Full screen-by-screen spec: `ux-redesign.md`.
 
-A1. **Add documents.** Paste text or upload Word, PDF, text, or markdown. Tag each as SOP, Policy, or Guideline.
-A2. **Check sections.** Documents are split into numbered, citable sections. Existing numbered headings are kept; unnumbered headings are numbered automatically; with no headings, Claude suggests section breaks. The wording is never changed (code verifies it). The user can rename and merge sections before continuing.
-A3. **Set the rules.** Guardrails, never-say list, glossary, audience roles, and style (tone, reading level, colors, font). "Suggest from my documents" drafts these for the user to edit; nothing is used until approved.
-A4. **Review and save** the pack. It joins the pack switcher.
+**Start.** "Start with my documents" is the main action. One sample (a fully built,
+made-up company) is offered as "Just want to look around first?". A saved demo
+file can be opened here. The demo limits (5 slides, 1 interactive activity,
+5 quiz questions) are stated before anything is built.
 
-**Stage B: Build a training**
+1. **Step 1: Add documents.** Upload Word, PDF, text, or markdown, or paste text.
+   The documents are split into topics (numbered, citable sections; wording never
+   changed). The user can check the topics or skip.
+2. **Step 2: Style and rules.** Optional, with defaults: how it should sound, rules
+   the training follows (two always on), key terms, words to avoid, organization name.
+3. **Step 3: Describe it.** Type or speak what the training should cover, pick who
+   it is for, then "Build my training". The coverage check runs automatically:
+   covered (build), partly covered (build the part we can, or add a document), or
+   not covered (say so plainly; never make anything up).
+4. **Lesson and quiz.** Slides and one activity, each showing where it came from.
+   A missed question shows why, links to the exact slide, and asks again with the
+   answers shuffled. Live progress: "3 of 5 mastered".
+5. **Step 4: Results and certificate.** Opens only when all 5 questions are
+   answered correctly. Shows "5 of 5 mastered", first try vs. after a second look,
+   a retest option, the certificate PDF, and "Save my demo".
 
-1. **Pick a pack** (a built-in pack or one you created in Stage A).
-2. **Ask** by typing or speaking: "Build a short training on ..."
-3. **Check coverage.** The system tells you what the knowledge base covers and
-   what it does not, before generating.
-4. **Approve the outline** (chapters and quiz plan).
-5. **Generate** slides, quiz, and interactive/animated activities.
-6. **Learn.** Learner works through slides and quizzes.
-7. **Remediate.** A wrong answer explains why, links back to the exact source
-   slide, and re-queues the question until it is answered correctly.
-8. **Certificate.** Learner enters their name at the start. At completion they can
-   download a PDF certificate (name, course, date, score, ID) or save it for later.
+Nothing is remembered between visits. Reloading or returning starts fresh.
 
 ---
 
@@ -189,13 +197,14 @@ Video is **out of scope** for the demo. Animation and interactivity replace it.
 
 | Mode | Output |
 |---|---|
-| **Demo** (default) | 3 to 5 slides, one chapter quiz, one animation, certificate |
+| **Demo** (default) | 5 slides, 1 interactive activity, 5 quiz questions, certificate (`DEMO_LIMITS` in one config object) |
 | **Full** | Multi-chapter course with chapter quizzes and a final quiz |
 | **Export: Training Guide** | Written guide with full content and citations |
 | **Export: Video Package** | Per-scene script, storyboard, and narration text for a video team |
 
 The demo stays short on purpose. Full builds, guides, and video packages are the
-growth path using the same engine.
+growth path using the same engine; they stay behind a developer flag and are not
+shown in the HR UI.
 
 ---
 
@@ -203,9 +212,12 @@ growth path using the same engine.
 
 - Every question has a source citation and an explanation.
 - On a miss: show why, link to the exact source slide, re-queue the question.
-- Keep missed questions in a review list so they can be retested later.
-- Do not mark the course complete until required questions are answered correctly.
-- In the demo every question is required. Score = percent answered correctly on the first try.
+- Keep missed questions in a review list so they can be retested during the visit.
+- Pass rule: all 5 questions must be answered correctly. No partial pass, no skip,
+  no retry limit. Step 4, results, and the certificate unlock only at 5 of 5.
+- Shuffle the answer order when a missed question is asked again.
+- Results show mastery ("5 of 5 mastered"). First try vs. after review is recorded
+  per question for the results list only, never to decide pass or fail.
 
 ---
 
@@ -225,12 +237,12 @@ growth path using the same engine.
 
 ## Demo script (about 3 minutes)
 
-1. Open the Security pack. Ask for a short footage-request training.
-2. Show the citations. Ask about something the SOP does not cover and show the
-   system say it is not covered.
-3. Switch to the HR retaliation pack. Same box, new tone, look, and format.
-4. Miss a question on purpose and show the loop back to the source.
-5. Finish and download the certificate.
+1. Start with my documents: upload an SOP, see the topics found, skip Step 2.
+2. Describe a training and build it. Show "where it came from" on a slide. Ask
+   for something the documents do not cover and show the plain "not covered" answer.
+3. Open the sample to show the same engine with a different tone, look, and format.
+4. Miss a question on purpose and show the second look at the source.
+5. Reach 5 of 5 mastered and download the certificate.
 
 ---
 
@@ -252,7 +264,7 @@ Newest at the bottom. One line each. Only chosen decisions.
 - 2026-10-27: Input is a text box or microphone describing the training wanted.
 - 2026-10-27: Knowledge base grounding is mandatory; AI must stay within the SOPs and policies.
 - 2026-10-27: Packs control knowledge base, style profile, guardrails, audience, glossary, and never-say list.
-- 2026-10-27: Demo must pivot between packs (security SOP and HR retaliation) with different tone, look, and format.
+- 2026-10-27: Demo must pivot between packs (security SOP and HR retaliation) with different tone, look, and format. (Pack tabs replaced on 2026-10-28: the pivot is now the user's documents vs. the sample.)
 - 2026-10-27: Video excluded from the demo; keep slides, animation, and interactive activities.
 - 2026-10-27: Demo trainings stay short; full courses, guides, and video packages are the growth path.
 - 2026-10-27: Wrong quiz answers return the learner to the missed source and re-queue the question.
@@ -271,6 +283,23 @@ Newest at the bottom. One line each. Only chosen decisions.
 - 2026-10-28: v1 flags unsupported items (report + marker) rather than auto-regenerating them.
 - 2026-10-28: Spec file moved from Downloads into the repo root.
 - 2026-10-28: Added Stage A, "Set up the knowledge base," before training design: add documents, check sections, set rules, review and save. (User asked for a clearer way to enter SOPs, rules, and guidelines first.)
-- 2026-10-28: Packs created in the app are saved in the browser only (no accounts or database), with export/import as a file. The server validates and rebuilds sections from the sent pack on every request.
+- 2026-10-28: Packs created in the app are saved in the browser only (no accounts or database), with export/import as a file. The server validates and rebuilds sections from the sent pack on every request. (Browser storage replaced later on 2026-10-28 by "nothing stored between visits"; export/import replaced by the demo JSON file.)
 - 2026-10-28: v1 document inputs: paste text, Word (.docx), PDF (text-based; scanned PDFs not supported), and text/markdown files. Extraction runs server-side.
 - 2026-10-28: Sectioning: keep numbered headings; auto-number unnumbered headings; otherwise Claude suggests breaks by quoting where each section starts, the code splits the original text there, and the user approves. Document wording is never rewritten.
+- 2026-10-28: UI is rebuilt for non-technical HR users. One path: Start, Step 1 Add documents, Step 2 Style and rules, Step 3 Describe it, Step 4 Learn and certificate. (Spec: ux-redesign.md, moved into the repo root.)
+- 2026-10-28: "Start with my documents" is the primary entry. The one pre-made pack becomes a labeled sample on the Start screen. Pack tabs are removed from the header.
+- 2026-10-28: App header is constant ("Pivot Trainer" plus a "Demo version" tag). Pack branding appears only inside the generated lesson and certificate.
+- 2026-10-28: Demo limits are shown before building: 5 slides, 1 interactive activity, 5 quiz questions. (Replaces "3 to 5 slides" in Length modes.)
+- 2026-10-28: Jargon is removed from the UI (pack, knowledge base, guardrails, glossary, citations, coverage, remediation). See the vocabulary table in ux-redesign.md.
+- 2026-10-28: Coverage check runs automatically when the user clicks "Build my training". It is no longer a separate button.
+- 2026-10-28: Results are shown as mastery ("5 of 5 mastered"), not first-try percent. The certificate shows mastery. (Replaces "Score = percent answered correctly on the first try.")
+- 2026-10-28: Pass rule: no certificate and no Step 4 until all 5 quiz questions are answered correctly. No skipping, no partial pass, unlimited retries.
+- 2026-10-28: Keep one fully built default sample pack. Demo users can add to it (documents, key terms, words to avoid, style and rules) and build their quiz from it instead of starting from scratch.
+- 2026-10-28: Nothing is stored between visits. No accounts, no server storage, no browser storage of packs, drafts, progress, or certificates. Every visit starts in the default state. (Replaces browser-saved packs, drafts, and certificates.)
+- 2026-10-28: Users who want to keep a demo download it as a JSON file and can open it again on a later visit. (Replaces "Import pack file" / pack export.)
+- 2026-10-28: The learner's name is asked once, right before slide 1.
+- 2026-10-28: The certificate shows mastery only ("5 of 5 mastered"); first try vs. review stays on the results screen.
+- 2026-10-28: Keep the pre-built example training as "See a finished example" on the sample card.
+- 2026-10-28: Step 2 has an optional brand color; it styles the lesson and the certificate border. Defaults to the app blue.
+- 2026-10-28: HR Anti-Retaliation is the default sample. Security SOP ships as a demo file that opens through the same "saved demo" path.
+- 2026-10-28: The certificate PDF is generated fully in the browser.

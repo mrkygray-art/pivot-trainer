@@ -45,12 +45,12 @@ export default function ProcessFlow({ activity, onDone }: Props) {
               >
                 <span
                   className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold transition-colors ${
-                    on ? "bg-primary text-white" : "bg-neutral-200 text-neutral-500"
+                    on ? "bg-primary text-white" : "bg-neutral-200 text-subtle"
                   }`}
                 >
                   {i + 1}
                 </span>
-                <span className={`text-sm font-semibold ${on ? "text-neutral-900" : "text-neutral-400"}`}>{s.label.replace(/^\d+\.\s*/, "")}</span>
+                <span className={`text-sm font-semibold ${on ? "text-neutral-900" : "text-subtle"}`}>{s.label.replace(/^\d+\.\s*/, "")}</span>
               </motion.button>
               {i < steps.length - 1 && (
                 <motion.span
@@ -71,7 +71,7 @@ export default function ProcessFlow({ activity, onDone }: Props) {
           <p className="font-semibold">
             Step {shown + 1}: {steps[shown].label.replace(/^\d+\.\s*/, "")}
           </p>
-          <p className="mt-1 text-neutral-700">{steps[shown].detail}</p>
+          <p className="mt-1 text-muted">{steps[shown].detail}</p>
           <CitationChips className="mt-2" citations={steps[shown].citations} />
         </motion.div>
       )}

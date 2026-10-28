@@ -27,9 +27,9 @@ export default function Timeline({ activity, onDone }: Props) {
         {events.slice(0, shown).map((e, i) => (
           <motion.li key={i} className="relative mb-6 pl-6" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
             <span className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-white bg-primary shadow" />
-            <p className="text-xs font-bold uppercase tracking-wide text-accent">{e.when}</p>
+            <p className="text-sm font-bold uppercase tracking-wide text-accent">{e.when}</p>
             <p className="pk-heading font-bold">{e.label}</p>
-            <p className="mt-1 text-neutral-700">{e.detail}</p>
+            <p className="mt-1 text-muted">{e.detail}</p>
             <CitationChips className="mt-2" citations={e.citations} />
           </motion.li>
         ))}
