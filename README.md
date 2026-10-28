@@ -2,6 +2,10 @@
 
 Short, interactive trainings generated from an organization's own SOPs and policies, with a citation on every slide and question.
 
+**Live demo: https://pivot-trainer-demo.vercel.app** (no sign-in; try the sample company first, or add your own documents)
+
+![Start screen](docs/images/start.webp)
+
 One engine, swappable **content packs**. The same app builds a field-procedure training for a security company, then pivots to an anti-retaliation training for people managers, with a different tone, look, and activity format, without changing any code.
 
 > **Independent prototype.** Not affiliated with any training vendor. Every organization, document, and person in the sample packs is fictional.
@@ -18,6 +22,16 @@ Built for HR and training people, not developers: one path, plain words, and the
 A fully built sample (a fictional retailer's anti-retaliation policy) can be opened from the Start screen and added to. A second sample (a fictional security company's procedures) ships as a demo file.
 
 **Nothing is stored between visits**: no accounts, no database, no browser storage. Users keep a demo by downloading it as a file and opening it again later. The file holds the documents, style, rules, and generated training, never the learner's name or answers.
+
+## Screens
+
+| Step 1: documents in, topics found | Step 3: describe the training |
+|---|---|
+| ![Documents and topics](docs/images/documents.webp) | ![Describe the training](docs/images/describe.webp) |
+| **Where it came from: the exact section, quote highlighted** | **A missed question: why, the source, and a second look** |
+| ![Source drawer](docs/images/source.webp) | ![Missed question](docs/images/miss.webp) |
+
+![Results and certificate](docs/images/results.webp)
 
 ## How grounding works
 
@@ -58,6 +72,7 @@ Nothing about security or HR is hardcoded in the engine. To add a built-in sampl
 - Motion (animation), dnd-kit (drag and drop), pdf-lib (certificate)
 - Web Speech API for voice input (Chrome and Edge; the text box is always available)
 - No accounts, database, or browser storage: all working data lives in memory for the visit
+- Public demo guardrails: per-visitor rate limits (5 trainings an hour) and a separate production API key with a monthly spending cap
 
 ## Run it
 
