@@ -305,3 +305,4 @@ Newest at the bottom. One line each. Only chosen decisions.
 - 2026-10-28: The certificate PDF is generated fully in the browser.
 - 2026-10-28: Going live: per-visitor rate limits in the API routes, plus a separate Anthropic API key with a monthly spend limit for production (the hard cap). Deploy on Vercel (team "power-quote"); repo goes public once live.
 - 2026-10-28: Public updates after launch: project README, GitHub profile README, portfolio card + case study in the "Load more" group, side nav entry, How I build tech, Ask Ky section, a captioned screenshot-loop demo, and one resume bullet.
+- 2026-10-28: Live at https://pivot-trainer-demo.vercel.app (Vercel team power-quote, project pivot-trainer; pivot-trainer.vercel.app was taken). Production key is a separate capped key, set in Vercel by Ky. Commit history rewritten to the GitHub no-reply address before going public.
