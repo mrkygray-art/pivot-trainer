@@ -5,11 +5,13 @@ import { Outline, trainingSchemaFor, Verification, type Flag, type GeneratedTrai
 import { generatePrompt, systemBlocks, VERIFY_SYSTEM, verifyPrompt } from "@/lib/prompts";
 import { buildClaims, runCodeChecks } from "@/lib/checks";
 import { badRequest, cleanRequest, errorResponse } from "@/lib/api";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
+    checkRateLimit(req, "build");
     const body = await req.json();
     const request = cleanRequest(body.request);
     if (!request) return badRequest("Missing request.");

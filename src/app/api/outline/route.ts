@@ -4,11 +4,13 @@ import { MODELS, EFFORT } from "@/lib/config";
 import { Coverage, Outline } from "@/lib/schemas";
 import { outlinePrompt, systemBlocks } from "@/lib/prompts";
 import { badRequest, cleanRequest, errorResponse } from "@/lib/api";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
+    checkRateLimit(req, "assist");
     const body = await req.json();
     const request = cleanRequest(body.request);
     if (!request) return badRequest("Missing request.");

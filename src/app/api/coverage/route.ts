@@ -5,11 +5,13 @@ import { Coverage } from "@/lib/schemas";
 import { coveragePrompt, systemBlocks } from "@/lib/prompts";
 import { findSection } from "@/lib/checks";
 import { badRequest, cleanRequest, errorResponse } from "@/lib/api";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
+    checkRateLimit(req, "assist");
     const body = await req.json();
     const request = cleanRequest(body.request);
     if (!request) return badRequest("Describe the training you want (at least a few words).");

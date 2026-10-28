@@ -303,3 +303,5 @@ Newest at the bottom. One line each. Only chosen decisions.
 - 2026-10-28: Step 2 has an optional brand color; it styles the lesson and the certificate border. Defaults to the app blue.
 - 2026-10-28: HR Anti-Retaliation is the default sample. Security SOP ships as a demo file that opens through the same "saved demo" path.
 - 2026-10-28: The certificate PDF is generated fully in the browser.
+- 2026-10-28: Going live: per-visitor rate limits in the API routes, plus a separate Anthropic API key with a monthly spend limit for production (the hard cap). Deploy on Vercel (team "power-quote"); repo goes public once live.
+- 2026-10-28: Public updates after launch: project README, GitHub profile README, portfolio card + case study in the "Load more" group, side nav entry, How I build tech, Ask Ky section, a captioned screenshot-loop demo, and one resume bullet.

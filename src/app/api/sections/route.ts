@@ -4,6 +4,7 @@ import { SectionBreaks } from "@/lib/schemas";
 import { SECTION_SYSTEM, sectionPrompt } from "@/lib/prompts";
 import { autoNumberHeadings, hasNumberedSections, keepPreamble, splitAtAnchors } from "@/lib/sections";
 import { badRequest, errorResponse } from "@/lib/api";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const maxDuration = 120;
 
@@ -15,6 +16,7 @@ const MAX_CHARS = 100_000;
 // 3. No headings: Claude says where sections start; the code splits the original text there.
 export async function POST(req: Request) {
   try {
+    checkRateLimit(req, "assist");
     const body = await req.json();
     const title = typeof body.title === "string" ? body.title.trim().slice(0, 160) : "";
     const text = typeof body.text === "string" ? body.text.replace(/\r\n/g, "\n").trim() : "";
